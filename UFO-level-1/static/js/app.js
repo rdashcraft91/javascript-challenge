@@ -4,7 +4,7 @@ var tableData = data;
 // Get a reference to the table body
 var tbody = d3.select("#ufo-table");
 
-// BONUS: Refactor to use Arrow Functions!
+// Create table with full data
 tableData.forEach((ufoSighting) => {
   var row = tbody.append("tr");
   Object.entries(ufoSighting).forEach(([key, value]) => {
@@ -28,12 +28,15 @@ button.on("click", function() {
 
     console.log(inputValue);
 
+    // Filter through the data for the filtered data
     var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
 
     console.log(filteredData);
 
+    // Clear the table
     tbody.html('');
 
+    // Show only filtered data
     filteredData.forEach((filteredUFO) => {
       var row = tbody.append("tr");
       Object.entries(filteredUFO).forEach(([key, value]) => {
