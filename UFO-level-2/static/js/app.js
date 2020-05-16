@@ -5,7 +5,7 @@ const fullData = data;
 var tableData = data;
 
 // Get a reference to the table body
-var tbody = d3.select("#ufo-table");
+var tbody = d3.select("#ufo-table").select('tbody');
 
 // Build table with all data
 tableData.forEach((ufoSighting) => {
@@ -156,9 +156,6 @@ function updateTable(filter) {
   // Assign the text of the dropdown menu option to a variable
   var selectedData = dropdownMenu.property("value");
 
-  // var loopFor = `${filter}`;
-  // console.log(loopFor);
-
   // Filter through the data for the filtered data
   if (filter === 'datetime') {
   var filteredData = tableData.filter(sighting => sighting.datetime === selectedData);}
@@ -198,36 +195,3 @@ function updateTable(filter) {
       });
     });}
 }
-
-// // Select the button
-// var button = d3.select("#filter-btn");
-
-// button.on("click", function() {
-
-//     // Select the input element and get the raw HTML node
-//     var inputElement = d3.select("#datetime");
-
-//     console.log(inputElement);
-
-//     // Get the value property of the input element
-//     var inputValue = inputElement.property("value");
-
-//     console.log(inputValue);
-
-//     // Filter through the data for the filtered data
-//     var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
-
-//     console.log(filteredData);
-
-//     // Clear the table
-//     tbody.html('');
-
-//     // Show only filtered data
-//     filteredData.forEach((filteredUFO) => {
-//       var row = tbody.append("tr");
-//       Object.entries(filteredUFO).forEach(([key, value]) => {
-//         var cell = row.append("td");
-//         cell.text(value);
-//       });
-//     });
-// });

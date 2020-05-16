@@ -2,7 +2,7 @@
 var tableData = data;
 
 // Get a reference to the table body
-var tbody = d3.select("#ufo-table");
+var tbody = d3.select("#ufo-table").select('tbody');
 
 // Create table with full data
 tableData.forEach((ufoSighting) => {
