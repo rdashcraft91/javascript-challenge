@@ -13,32 +13,66 @@ tableData.forEach((ufoSighting) => {
   });
 });
 
-// Select the button
-var button = d3.select("#filter-btn");
+// Populate dropdown menus with items from table
 
-button.on("click", function() {
 
-    // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+// Call updateTable() when a change takes place to the DOM
+d3.selectAll("#options").on("change", updateTable);
 
-    console.log(inputElement);
+// This function is called when a dropdown menu item is selected
+function updateTable() {
+  // Use D3 to select the dropdown menu
+  var dropdownMenu = d3.select("#options");
+  // Assign the value of the dropdown menu option to a variable
+  var dataset = dropdownMenu.property("value");
 
-    // Get the value property of the input element
-    var inputValue = inputElement.property("value");
+  // Filter through the data for the filtered data
+  var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
 
-    console.log(inputValue);
+  console.log(filteredData);
 
-    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+  // Clear the table
+  tbody.html('');
 
-    console.log(filteredData);
-
-    tbody.html('');
-
-    filteredData.forEach((filteredUFO) => {
-      var row = tbody.append("tr");
-      Object.entries(filteredUFO).forEach(([key, value]) => {
-        var cell = row.append("td");
-        cell.text(value);
-      });
+  // Show only filtered data
+  filteredData.forEach((filteredUFO) => {
+    var row = tbody.append("tr");
+    Object.entries(filteredUFO).forEach(([key, value]) => {
+      var cell = row.append("td");
+      cell.text(value);
     });
-});
+  });
+}
+
+// // Select the button
+// var button = d3.select("#filter-btn");
+
+// button.on("click", function() {
+
+//     // Select the input element and get the raw HTML node
+//     var inputElement = d3.select("#datetime");
+
+//     console.log(inputElement);
+
+//     // Get the value property of the input element
+//     var inputValue = inputElement.property("value");
+
+//     console.log(inputValue);
+
+//     // Filter through the data for the filtered data
+//     var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+
+//     console.log(filteredData);
+
+//     // Clear the table
+//     tbody.html('');
+
+//     // Show only filtered data
+//     filteredData.forEach((filteredUFO) => {
+//       var row = tbody.append("tr");
+//       Object.entries(filteredUFO).forEach(([key, value]) => {
+//         var cell = row.append("td");
+//         cell.text(value);
+//       });
+//     });
+// });
