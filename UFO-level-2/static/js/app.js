@@ -142,7 +142,7 @@ d3.select("#shape")
     });
 
 // Call updateTable() when a change takes place to the DOM
-d3.selectAll("#date").on("change", function() {var filter = 'datetime'; updateTable(filter)});
+d3.selectAll("#datetime").on("change", function() {var filter = 'datetime'; updateTable(filter)});
 d3.selectAll("#city").on("change", function() {var filter = 'city'; updateTable(filter)});
 d3.selectAll("#state").on("change", function() {var filter = 'state'; updateTable(filter)});
 d3.selectAll("#country").on("change", function() {var filter = 'country'; updateTable(filter)});
